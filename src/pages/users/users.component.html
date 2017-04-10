@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>users</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <ion-label floating>Enter name</ion-label>
+    <ion-input type="text"  [(ngModel)] = "input.data"></ion-input>
+  </ion-item>
+  <button ion-button block (click)="searchUsers(input)">Search</button>
+
+  <ion-list *ngIf = "allUsers">
+    <button ion-item *ngFor="let user of allUsers['items']">
+      <ion-avatar item-left>
+        <img [src]="user.avatar_url">
+      </ion-avatar>
+      <h2>{{ user.login }}</h2>
+    </button>
+  </ion-list>
+</ion-content>

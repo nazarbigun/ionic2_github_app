@@ -1,0 +1,27 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>code</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <ion-label floating>Enter name</ion-label>
+    <ion-input type="text"  [(ngModel)] = "input.data"></ion-input>
+  </ion-item>
+  <button ion-button block (click)="searchCode(input)">Search</button>
+
+  <ion-list *ngIf = "allCode">
+    <button ion-item *ngFor="let item of allCode['items']">
+      <!--<h2>{{ item.body }}</h2>-->
+      <!--<h4>{{ item.id }}</h4>-->
+      <!--<h6>{{ item.created_at | date: 'medium' }}</h6>-->
+    </button>
+  </ion-list>
+</ion-content>
