@@ -4,7 +4,7 @@
     <button ion-button icon-only menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>commits</ion-title>
+    <ion-title>Commits</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -17,11 +17,13 @@
   </ion-item>
   <button ion-button block (click)="searchCommits(input)">Search</button>
 
-  <ion-list *ngIf = "allIssues">
-    <button ion-item *ngFor="let item of allIssues['items']">
-      <!--<h2>{{ item.body }}</h2>-->
-      <!--<h4>{{ item.id }}</h4>-->
-      <!--<h6>{{ item.created_at | date: 'medium' }}</h6>-->
+  <hr>
+
+  <ion-list *ngIf = "allCommits">
+    <button ion-item *ngFor="let item of allCommits['items']">
+      <h2>{{ item.commit.author.name }}</h2>
+      <h4>{{ item.commit.message }}</h4>
+      <h6>{{ item.html_url }}</h6>
     </button>
   </ion-list>
 </ion-content>
