@@ -4,6 +4,8 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
 import { Http } from '@angular/http';
+import {TranslateModule} from 'ng2-translate/ng2-translate';
+import {TranslateLoader} from 'ng2-translate';
 
 import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { CodePage } from '../pages/code/code.component';
@@ -17,6 +19,8 @@ import { Issues } from '../providers/issues';
 import { Repositories } from '../providers/repositories';
 import { Commits } from '../providers/commits';
 import { Code } from '../providers/code';
+
+import { createTranslateLoader } from '../services/translate-module';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -34,7 +38,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpModule
+    HttpModule,
+    TranslateModule.forRoot({
+      provide: TranslateLoader,
+      useFactory: (createTranslateLoader),
+      deps: [Http]
+    }),
   ],
   bootstrap: [IonicApp],
   entryComponents: [

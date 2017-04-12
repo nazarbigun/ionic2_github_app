@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 
 import { Platform, MenuController, Nav } from 'ionic-angular';
+import {TranslateService} from 'ng2-translate';
 
 import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { CodePage } from '../pages/code/code.component';
@@ -27,17 +28,18 @@ export class MyApp {
     public platform: Platform,
     public menu: MenuController,
     public statusBar: StatusBar,
-    public splashScreen: SplashScreen
+    public splashScreen: SplashScreen,
+    public translate: TranslateService
   ) {
     this.initializeApp();
 
     // set our app's pages
     this.pages = [
-      { title: 'Search Repositories', component: RepositoriesPage },
-      { title: 'Search Commits', component: CommitsPage },
-      { title: 'Search Issues', component: IssuesPage },
-      { title: 'Search Code', component: CodePage },
-      { title: 'Search Users', component: UsersPage }
+      { title: 'Search_Repositories', component: RepositoriesPage },
+      { title: 'Search_Commits', component: CommitsPage },
+      { title: 'Search_Issues', component: IssuesPage },
+      { title: 'Search_Code', component: CodePage },
+      { title: 'Search_Users', component: UsersPage }
     ];
   }
 
@@ -47,6 +49,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.translate.setDefaultLang('en');
     });
   }
 
@@ -55,5 +58,9 @@ export class MyApp {
     this.menu.close();
     // navigate to the new page if it is not the current page
     this.nav.setRoot(page.component);
+  }
+
+  public changeLang(mySelect) {
+    this.translate.use(mySelect)
   }
 }

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { RequestOptions, Http, Headers } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class Commits {
@@ -24,6 +25,12 @@ export class Commits {
 
   load(input): Observable<any[]> {
     return this.get(`${this.url}/search/commits?q=` + input['data'])
-      .map(res => <any[]>res.json());
+      .map(res => <any[]>res.json())
+      .catch(this.handleError)
+  }
+
+  private handleError(error: Response){
+    console.log(error.json());
+    return Observable.throw(error.json() || 'Server error');
   }
 }

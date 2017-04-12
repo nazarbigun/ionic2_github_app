@@ -3,7 +3,7 @@
     <button ion-button icon-only menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Users</ion-title>
+    <ion-title>{{"USERS" | translate}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -11,10 +11,10 @@
 
 <ion-content padding>
   <ion-item>
-    <ion-label floating>Enter name</ion-label>
+    <ion-label floating>{{"ENTER_NAME" | translate}}</ion-label>
     <ion-input type="text"  [(ngModel)] = "input.data"></ion-input>
   </ion-item>
-  <button ion-button block (click)="searchUsers(input)">Search</button>
+  <button ion-button block (click)="searchUsers(input)">{{"SEARCH" | translate}}</button>
 
   <ion-list *ngIf = "allUsers">
     <button ion-item *ngFor="let user of allUsers['items']">

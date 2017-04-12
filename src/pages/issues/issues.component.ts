@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 
 import { Issues } from '../../providers/issues';
 
@@ -11,8 +11,9 @@ export class IssuesPage {
 
   allIssues: any[]
   input = {data: ''};
+  errorMessage: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private issues: Issues) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private issues: Issues, public alertCtrl: AlertController) {
   }
 
   public searchIssues(input){
@@ -20,7 +21,19 @@ export class IssuesPage {
       .subscribe(response => {
         console.log(response)
         this.allIssues = response
+      },
+      error => {this.errorMessage = <any>error
+        this.showAlert(this.errorMessage)
       }
   )}
+
+  showAlert(error) {
+    let alert = this.alertCtrl.create({
+      title: 'Error!',
+      subTitle: error.errors[0].message,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
 
 }

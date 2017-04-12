@@ -3,16 +3,16 @@
     <button ion-button icon-only menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Code</ion-title>
+    <ion-title>{{ "CODE" | translate }}</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <ion-item>
-    <ion-label floating>Enter name</ion-label>
+    <ion-label floating>{{"ENTER_NAME" | translate}}</ion-label>
     <ion-input type="text"  [(ngModel)] = "input.data"></ion-input>
   </ion-item>
-  <button ion-button block (click)="searchCode(input)">Search</button>
+  <button ion-button block (click)="searchCode(input)">{{"SEARCH" | translate}}</button>
 
   <ion-list *ngIf = "allCode">
     <button ion-item *ngFor="let item of allCode['items']">

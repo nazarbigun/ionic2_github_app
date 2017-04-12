@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 import { User } from '../models/user';
 
@@ -14,6 +15,12 @@ export class Users {
 
   load(input): Observable<User[]> {
     return this.http.get(`${this.url}/search/users?q=` + input['data'])
-      .map(res => <User[]>res.json());
+      .map(res => <User[]>res.json())
+      .catch(this.handleError)
+  }
+
+  private handleError(error: Response){
+    console.log(error.json());
+    return Observable.throw(error.json() || 'Server error');
   }
 }

@@ -2,14 +2,22 @@
 
   <ion-header>
     <ion-toolbar>
-      <ion-title>Pages</ion-title>
+      <ion-title>{{"PAGES" | translate}}</ion-title>
     </ion-toolbar>
+
+    <ion-item>
+      <ion-label>{{"LANGUAGE" | translate}}</ion-label>
+      <ion-select [(ngModel)]="mySelect" (ngModelChange)="changeLang(mySelect)">
+        <ion-option value="ua">Українська</ion-option>
+        <ion-option value="en" selected = "true">English</ion-option>
+      </ion-select>
+    </ion-item>
   </ion-header>
 
   <ion-content>
     <ion-list>
       <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
+        {{p.title | uppercase | translate}}
       </button>
     </ion-list>
   </ion-content>

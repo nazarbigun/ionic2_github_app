@@ -4,7 +4,7 @@
     <button ion-button icon-only menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Commits</ion-title>
+    <ion-title>{{ "COMMITS" | translate }}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -12,10 +12,10 @@
 
 <ion-content padding>
   <ion-item>
-    <ion-label floating>Enter name</ion-label>
+    <ion-label floating>{{"ENTER_NAME" | translate}}</ion-label>
     <ion-input type="text"  [(ngModel)] = "input.data"></ion-input>
   </ion-item>
-  <button ion-button block (click)="searchCommits(input)">Search</button>
+  <button ion-button block (click)="searchCommits(input)">{{"SEARCH" | translate}}</button>
 
   <hr>
 
