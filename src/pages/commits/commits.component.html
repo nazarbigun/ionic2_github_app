@@ -15,7 +15,7 @@
     <ion-label floating>{{"ENTER_NAME" | translate}}</ion-label>
     <ion-input type="text"  [(ngModel)] = "input.data"></ion-input>
   </ion-item>
-  <button ion-button block (click)="searchCommits(input)">{{"SEARCH" | translate}}</button>
+  <button ion-button block (click)="searchCommits(input)"> <ion-icon name="search"></ion-icon> {{"SEARCH" | translate}} </button>
 
   <hr>
 

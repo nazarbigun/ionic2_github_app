@@ -14,7 +14,7 @@
     <ion-label floating>{{"ENTER_NAME" | translate}}</ion-label>
     <ion-input type="text"  [(ngModel)] = "input.data"></ion-input>
   </ion-item>
-  <button ion-button block (click)="searchUsers(input)">{{"SEARCH" | translate}}</button>
+  <button ion-button block (click)="searchUsers(input)"><ion-icon name="search"></ion-icon> {{"SEARCH" | translate}}</button>
 
   <ion-list *ngIf = "allUsers">
     <button ion-item *ngFor="let user of allUsers['items']">
